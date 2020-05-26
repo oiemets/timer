@@ -49,6 +49,7 @@ function stop() {
 };
 
 function disabledStyleToggler() {
+    disableAttrToggler();
     startBtn.classList.toggle('w3-disabled');
     stopBtn.classList.toggle('w3-disabled');
     input.classList.toggle('w3-disabled');
@@ -68,5 +69,17 @@ function keyEvent(e, code) {
         } else {
             stop();
         }
+    }
+};
+
+function disableAttrToggler() {
+    if(startBtn.hasAttribute('disabled') || input.hasAttribute('disabled')){
+        startBtn.removeAttribute('disabled');
+        input.removeAttribute('disabled');
+        stopBtn.setAttribute('disabled', '');
+    } else if(stopBtn.hasAttribute('disabled')){
+        stopBtn.removeAttribute('disabled');
+        startBtn.setAttribute('disabled', '');
+        input.setAttribute('disabled', '');
     }
 };
